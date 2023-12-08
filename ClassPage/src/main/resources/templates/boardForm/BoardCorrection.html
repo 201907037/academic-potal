@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>수정하기</title>
+<link rel="stylesheet"	type="text/css"	 href="css/headerS.css">
+<link rel="stylesheet"	type="text/css"	 href="css/table.css">
+<style>
+	a{
+	text-decoration: none;
+	color: black;
+	}
+	a:hover{
+	color: skyblue;
+	}
+	textarea {
+    font-size: 16px; /* 글자 크기를 조절할 수 있습니다. */
+    resize: none; /* 크기를 조절하지 못하도록 설정합니다. */
+	}
+</style>
+</head>
+<body>
+<div th:insert="~{/header::header}"></div>
+	<center>
+		<h1>글수정</h1>
+		<form action="/CO" method="post">
+			<table border="1">
+				<tr>
+					<th>글번호</th><td><input type="text" name="seq" th:value="${getBoard.getSeq}" readonly></td>
+				</tr>
+				<tr>
+					<th>제목</th><td><input type="text" name="title" th:value="${getBoard.getTitle}"></td>
+				</tr>	
+				<tr>
+					<th>작성자</th><td><input type="text" name="writer" th:value="${getBoard.getWriter}"></td>
+				</tr>
+				<tr>
+					<th>내용</th>
+					<td><textarea name="content" cols="206" rows="13" th:text="${getBoard.getContent}"></textarea></td>
+				</tr>
+				<tr>
+					<th colspan="2" align="center">
+						<input type="submit" value="수정하기">
+					</th>
+				</tr>
+			</table>
+		</form>
+		<a th:href="@{/List}">글목록</a>
+	</center>
+</body>
+</html>

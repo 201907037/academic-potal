@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${title}"></title>
+<link rel="stylesheet"	type="text/css"	 href="css/headerS.css">
+<link rel="stylesheet"	type="text/css"	 href="css/table.css">
+<style>
+	textarea {
+    font-size: 16px; /* 글자 크기를 조절할 수 있습니다. */
+    resize: none; /* 크기를 조절하지 못하도록 설정합니다. */
+	}
+	a{
+	text-decoration: none;
+	color: black;
+	}
+	a:hover{
+	color: skyblue;
+	}
+</style>
+</head>
+<body>
+	<div th:insert="~{/header::header}"></div>
+	<center>
+		<h1 th:text="${getBoard.getTitle}"></h1>
+		<table border="1">
+			<tr>
+				<td th:text="'글번호 : '+${getBoard.getSeq}"></td>
+				<td th:text="'작성일'+${getBoard.getCreateDate}"></td>
+				<td colspan="3" th:text="'작성자'+${getBoard.getWriter}"></td>
+				
+				
+			</tr>
+			<tr>
+				<td colspan="5"><textarea th:text="${getBoard.getContent}" cols="210" rows="29" readonly></textarea></td>
+			</tr>
+		</table>
+		<a th:href="@{/List}">글목록</a>
+		<a th:href="@{/Correction(seq=${getBoard.getSeq})}">수정하기</a>
+	</center>
+</body>
+</html>

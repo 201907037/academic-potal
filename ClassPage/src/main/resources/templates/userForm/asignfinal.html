@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+
+<title>회원가입</title>
+<style>
+	.message{
+		color: deepskyblue;
+	}
+</style>
+</head>
+<body>
+	<center>
+		<h1>회원가입</h1><br><br>
+	<form action="/end" method="post" onsubmit="return idCheck()">
+	<table>
+		<tr>
+			<td>
+				Id
+			</td>
+			<td colspan="2">
+				<input type="text" name="id" th:value="${id}" readonly>
+			</td>
+			<td th:text="${message}" class="message">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				password
+			</td>
+			<td colspan="2">
+				<input type="password"  name="pw" id="pw">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				비밀번호확인
+			</td>
+			<td colspan="2">
+				<input type="password"  name="pwre" id="pwre">
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				이름
+			</td>
+			<td colspan="2">
+				<input type="text" name="name" onclick="pwCheck()" required>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				나이
+			</td>
+			<td colspan="2">
+				<input type="text" name="age" required>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				종류
+			</td>
+			<td>
+				<label>
+     			<input type="radio" name="authority" value="학생" checked>
+      			학생
+   				</label>
+			</td>
+			<td>
+				<label>
+      			<input type="radio" name="authority" value="교사">
+      			교사
+    			</label>
+			</td>
+		</tr>
+		<tr>
+			<td></td><td></td>
+			<td>
+				<input type="submit" value="회원가입">
+			</td>
+		</tr>
+	</table>
+	</form>
+	</center>
+	<script>
+		function pwCheck(){
+   			const pw1 = document.getElementById("pw").value;
+   			const pw2 = document.getElementById("pwre").value;
+			
+			if(pw1!=pw2){
+				alert("비밀번호가 일치하지 않습니다.");
+				document.getElementById("pwre").focus();
+			}
+		
+		}
+		function idCheck(){
+			var check = document.getElementById("id").value;
+			if(isNaN(check)){
+				alert("본인에게 주어진 숫자 코드를 입력하세요.")
+				return false;
+			}
+			else{
+				
+				return true;
+			}
+			
+		}
+		window.addEventListener('popstate', function (event) {
+  // 뒤로가기를 막음
+  			history.pushState(null, null, window.location.href);
+		});
+
+// 초기에 현재 상태를 저장
+			history.pushState(null, null, window.location.href);
+	</script>
+</body>
+</html>

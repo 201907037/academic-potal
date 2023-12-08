@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>글작성</title>
+<link rel="stylesheet"	type="text/css"	 href="css/headerS.css">
+<link rel="stylesheet"	type="text/css"	 href="css/table.css">
+<style>
+	textarea {
+    font-size: 16px; /* 글자 크기를 조절할 수 있습니다. */
+    resize: none; /* 크기를 조절하지 못하도록 설정합니다. */
+	}
+	a{
+	text-decoration: none;
+	color: black;
+	}
+	a:hover{
+	color: skyblue;
+	}
+</style>
+</head>
+<body>
+	<div th:insert="~{/header::header}"></div>
+	<center>
+		<h1>글작성</h1>
+		<form action="/insert" method="post">
+			<table border="1">
+				<tr>
+					<th>제목</th><td><input type="text" name="title"></td>
+				</tr>	
+				<tr>
+					<th>작성자</th><td><input type="text" name="writer"></td>
+				</tr>
+				<tr>
+					<th>내용</th>
+					<td><textarea name="content" cols="206" rows="13"></textarea></td>
+				</tr>
+				<tr>
+					<th colspan="2" align="center">
+						<input type="submit" value="새글등록">
+					</th>
+				</tr>
+			</table>
+		</form>
+		<a th:href="@{/List}">글목록</a>
+	</center>
+</body>
+</html>
