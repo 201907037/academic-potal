@@ -2,9 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-
-<title>main</title>
-<link rel="stylesheet"	type="text/css"	 href="css/headerS.css">
+<title>Insert title here</title>
 <style>
 	h1{
 		text-align: center;
@@ -12,23 +10,55 @@
 	h2{
 		text-align: center;	
 	}
-	.a123{
+	a{
 		color: black;
 		text-decoration: none;
 	}
-	.a123:hover{
+	a:hover{
 		color: deepskyblue;
 	}
 </style>
 </head>
 <body>
-	<div th:insert="~{/header::header}"></div>
 	<center>
-	<h1>학원 웹 페이지</h1>
-	<hr>
-	<h2><a href="/loginForm" class="a123">로그인</a></h2><br>
-	<h2><a href="/asignForm" class="a123">회원가입</a></h1>
-	<h2><a href="/List" class="a123">게시판</a></h1>
+		<h1>로그인</h1>
+	<form action="/View" id="loginForm" method="post">
+	<table border="1">
+		<tr>
+			<td>
+				ID
+			</td>
+			<td>
+				<input type="text" name="id" id="id">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				PASWORD
+			</td>
+			<td>
+				<input type="password" name="pw" id="pw">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="submit" value="로그인">
+			</td>
+		</tr>
+	</table>
+	</form>
+	<h2><a href="/asignForm">회원가입하기</a></a></h1>
 	</center>
+	<script>
+		document.getElementById("loginForm").addEventListener("submit", function(event) {
+   			 const inputid = document.getElementById("id").value;
+   			 const inputpw = document.getElementById("pw").value;
+
+    		if (inputid === "" || inputpw==="") {
+       			 alert("아이디와 패스워드를 입력하세요.");
+       			 event.preventDefault(); 
+    			}
+	});
+	</script>
 </body>
 </html>
