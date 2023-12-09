@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+</head>
+<body>
+<section class="menu" th:fragment="header2">
+		<article class="nav">
+			<div ><h2 class="ho">학원 홈페이지</h2></div>
+			<ul id="sub-menu">
+				<li><a href="/List" onclick="sessionCh()">게시판</a></li>
+				<li><a href="/sub" onclick="sessionCh()">수강신청</a></li>
+				<li><a href="/" >로그인</a></li>
+				<li><a href="/asignForm">회원가입</a></li>
+			</ul>
+		</article>
+		<script>
+			var sessionData = sessionStorage.getItem("user");
+			
+			function sessionCh(){
+				
+					alert("로그인 필요");
+					event.preventDefault(); 
+			}
+			function titlelock(){
+				event.preventDefault(); 
+			}
+		</script>
+</section>
+</body>
+</html>

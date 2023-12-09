@@ -1,0 +1,28 @@
+@charset "UTF-8";
+ table {
+      max-width: 400px;
+      margin: auto;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    /* 로그인 버튼 스타일 */
+    .login-btn {
+      width: 100%;
+      padding: 10px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .login-btn:hover {
+      background-color: #45a049;
+    }

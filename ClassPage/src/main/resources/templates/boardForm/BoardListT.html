@@ -1,10 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>게시판(교사용)</title>
+<link rel="stylesheet"	type="text/css"	 href="css/headerS.css">
+<link rel="stylesheet"	type="text/css"	 href="css/table.css">
+<style>
+			/* 전체 테이블의 크기 조절 */
+
+a{
+	text-decoration: none;
+	color: black;
+}
+a:hover{
+	color: skyblue;
+}
+		</style>  
 </head>
 <body>
-
+<div th:insert="~{/header3::header3}"></div>
+	<Center>
+	<h1>게시판</h1>
+	<table border="1"cellpadding =0 cellspacing="0">
+				<tr>
+					<th width =50>번호</th>
+					<th width =80>작성자</th>
+					<th width =200>제목</th>
+					<th width =70>등록일</th>
+					
+				</tr>
+				<tr th:each="board, state:${boardList}">  
+         		<td th:text="${board.seq}"></td>
+         		<td th:text="${board.writer}"></td>
+	            <td><a th:href="@{/getBoardT(seq=${board.seq})}" th:text="${board.title}"></a></td>         
+                <td th:text="${#dates.format(board.createDate,'yyyy-MM-dd')}"></td>
+            	</tr>
+	</table>
+	<a th:href ="@{/insertBoard}">새글 등록</a>       
+	</Center>			
 </body>
 </html>

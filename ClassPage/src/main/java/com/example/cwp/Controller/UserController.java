@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.cwp.domain.User;
 import com.example.cwp.service.UserService;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+
 
 @Controller
 public class UserController {
@@ -18,9 +21,9 @@ public class UserController {
 	private UserService us;
 	
 	
-	@RequestMapping("/loginForm")
+	@RequestMapping("/index")
 	public String goLogin() {
-		return "/userForm/login";
+		return "/index";
 	}
 	
 	@RequestMapping("/asignForm")
@@ -46,6 +49,41 @@ public class UserController {
 			model.addAttribute("message", message);
 			model.addAttribute("id", id);
 			return "/userForm/asign2";
+		}
+	}
+	
+	@PostMapping("/login")
+	public String login(User user, HttpSession session,Model model) {
+		User findUser = us.getUser(user);
+		if(findUser != null && findUser.getPw()==user.getPw()) {
+			session.setAttribute("user", findUser);
+			model.addAttribute("name", findUser.getName()+"("+findUser.getAuthority()+")");
+			return "/main";
+		}
+		else {
+			model.addAttribute("notice", "아이디, 비밀번호가 일치하지 않습니다.");
+			return "/index";
+		}
+	}
+	@RequestMapping("/logout")
+	public String logout(HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		if(session != null) {
+			session.invalidate();
+		}
+		return "redirect:/index";
+	}
+	@RequestMapping("/main")
+	public String goMain(HttpServletRequest re,Model model) {
+		HttpSession session = re.getSession(false);
+		User findUser = (User) session.getAttribute("user");
+		if(findUser==null) {
+			return "redirect:/index";
+		}
+		else {
+			session.setAttribute("user", findUser);
+			model.addAttribute("name", findUser.getName()+"("+findUser.getAuthority()+")");
+			return "/main";
 		}
 	}
 }

@@ -19,16 +19,21 @@
 	.a123:hover{
 		color: deepskyblue;
 	}
+	img{
+		 	max-width: 50%; /* 이미지가 부모 요소를 넘어가지 않도록 최대 너비 설정 */
+    		height: auto; /* 비율을 유지하면서 이미지 크기 조절 */
+	}
 </style>
 </head>
 <body>
-	<div th:insert="~{/header::header}"></div>
+	<div th:insert="~{/header3::header3}"></div>
 	<center>
-	<h1>학원 웹 페이지</h1>
+	<h1>학원 메인 페이지</h1>
+	<h2 th:text="${name}+'님 반갑습니다!'"></h2>
 	<hr>
-	<h2><a href="/loginForm" class="a123">로그인</a></h2><br>
-	<h2><a href="/asignForm" class="a123">회원가입</a></h1>
-	<h2><a href="/List" class="a123">게시판</a></h1>
+	<div>
+		<img src="/img/study.jpg">
+	</div>
 	</center>
 </body>
 </html>

@@ -20,7 +20,7 @@
 </style>
 </head>
 <body>
-	<div th:insert="~{/header::header}"></div>
+	<div th:insert="~{/header3::header3}"></div>
 	<center>
 		<h1 th:text="${getBoard.getTitle}"></h1>
 		<table border="1">
@@ -36,25 +36,8 @@
 			</tr>
 		</table>
 		<a th:href="@{/List}">글목록</a>&nbsp;
-		<a th:href="@{/Correction(seq=${getBoard.getSeq})}" th:text="${confirm}" id="linkc">수정하기</a>&nbsp;
-		<a th:href="@{/Delete(seq=${getBoard.getSeq})}" th:text="${delete}" id="linkd" ></a>
+		<a th:href="@{/CorrectionT(seq=${getBoard.getSeq})}">수정하기</a>&nbsp;
+		<a th:href="@{/DeleteT(seq=${getBoard.getSeq})}">삭제하기</a>
 	</center>
-	 <script>
-        // Disable the link
-        document.getElementById("linkd").addEventListener("click", function(event) {
-            // Prevent the default link behavior
-           if (this.innerText === "본인 글만 삭제 가능합니다.") {
-                // Prevent the default link behavior
-                event.preventDefault();
-                }
-        });
-        document.getElementById("linkc").addEventListener("click", function(event) {
-            // Prevent the default link behavior
-           if (this.innerText === "본인 글만 수정 가능합니다.") {
-                // Prevent the default link behavior
-                event.preventDefault();
-                }
-        });
-    </script>
 </body>
 </html>

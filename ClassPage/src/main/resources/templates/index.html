@@ -2,10 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인</title>
+<link rel="stylesheet"	type="text/css"	 href="css/headerS2.css">
+<link rel="stylesheet"	type="text/css"	 href="css/logintable.css">
 <style>
 	h1{
 		text-align: center;
+		padding-top: 50px;
 	}
 	h2{
 		text-align: center;	
@@ -20,9 +23,11 @@
 </style>
 </head>
 <body>
+	<div th:insert="~{/header2::header2}"></div>
 	<center>
 		<h1>로그인</h1>
-	<form action="/View" id="loginForm" method="post">
+		<h3  th:text="${notice}"></h3>
+	<form action="/login" id="loginForm" method="post">
 	<table border="1">
 		<tr>
 			<td>
@@ -42,7 +47,7 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<input type="submit" value="로그인">
+				<input type="submit" value="로그인" class="login-btn">
 			</td>
 		</tr>
 	</table>
@@ -58,7 +63,8 @@
        			 alert("아이디와 패스워드를 입력하세요.");
        			 event.preventDefault(); 
     			}
-	});
+			});
+		
 	</script>
 </body>
 </html>

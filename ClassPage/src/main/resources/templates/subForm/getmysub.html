@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${title}"></title>
+<link rel="stylesheet"	type="text/css"	 href="css/headerS.css">
+<link rel="stylesheet"	type="text/css"	 href="css/table.css">
+<style>
+	a{
+	text-decoration: none;
+	color: black;
+	}
+	a:hover{
+	color: skyblue;
+	}
+	textarea {
+    font-size: 16px; /* 글자 크기를 조절할 수 있습니다. */
+    resize: none; /* 크기를 조절하지 못하도록 설정합니다. */
+	}
+</style>
+</head>
+<body>
+<center>
+	<form action="/deleteSub" method="get">
+		<h1 th:text="${sub.getTitle}"></h1>
+		<table border="1">
+			<tr>
+				<td><input type="text" name="seq" th:value="${sub.getSeq}" readonly></td>
+				<td th:text="'인원수 : '+${sub.getNowcnt}+'/'+${sub.getMaxcnt}"></td>
+				<td colspan="3" th:text="'강사'+${sub.getTeacher}"></td>
+				
+				
+			</tr>
+			<tr>
+				<td colspan="5"><textarea th:text="${sub.getContent}" cols="210" rows="29" readonly></textarea></td>
+			</tr>
+			<tr>
+				<td>
+					<input type="submit" value="신청취소">
+				</td>
+			</tr>
+		</table>
+		</form>
+		<a th:href="@{/mySub}">돌아가기</a>&nbsp;
+	</center>
+</body>
+</html>

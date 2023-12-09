@@ -28,16 +28,24 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public User getUser(User user) {
-		// TODO Auto-generated method stub
-		
-		return uRop.findById(user.getId()).get();
+		Optional<User> findUser = uRop.findById(user.getId());
+		if(findUser.isPresent()) {
+			return findUser.get();
+		}
+		else {
+			return null;
+		}
 	}
 
 	@Override
 	public void updateUser(User user) {
-		// TODO Auto-generated method stub
 		User userfind = uRop.findById(user.getId()).get();
-		
+		userfind.setSub1(user.getSub1());
+		userfind.setSub2(user.getSub2());
+		userfind.setSub3(user.getSub3());
+		userfind.setSub4(user.getSub4());
+		userfind.setSub5(user.getSub5());
+		uRop.save(userfind);
 	}
 
 	@Override
@@ -48,5 +56,7 @@ public class UserServiceImpl implements UserService{
 		}
 		return "사용 가능한 아이디";
 	}
+
+	
 
 }

@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>환영합니다!~~~~</title>
+<link rel="stylesheet"	type="text/css"	 href="css/headerS2.css">
 <style>
 	
 	h2{
@@ -18,11 +19,12 @@
 </style>
 </head>
 <body>
+	<div th:insert="~{/header2::header2}"></div>
 	<center>
 		<br><br><br><br>
 	<h1>회원가입이 완료되었습니다.</h1><br>
 	<h1>환영합니다!</h1><br>
-	<h2><a href="/loginForm">로그인 하러가기</a></a></h2><br>
+	<h2><a href="/login">로그인 하러가기</a></a></h2><br>
 	</center>
 	
 </body>

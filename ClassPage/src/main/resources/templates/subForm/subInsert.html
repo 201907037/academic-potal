@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>글작성</title>
+<title>강의 추가</title>
 <link rel="stylesheet"	type="text/css"	 href="css/headerS.css">
 <link rel="stylesheet"	type="text/css"	 href="css/table.css">
 <style>
@@ -20,29 +20,47 @@
 </style>
 </head>
 <body>
+<center>
 	<div th:insert="~{/header::header}"></div>
-	<center>
-		<h1>글작성</h1>
-		<form action="/insert" method="post">
+		<h1>강의등록</h1>
+		<form action="/plus" method="post" onsubmit="return checkcnt()">
 			<table border="1">
 				<tr>
-					<th>제목</th><td><input type="text" name="title" size="90px"></td>
+					<th>강의명</th><td><input type="text" name="title" size="90px"></td>
 				</tr>	
 				<tr>
-					<th>작성자</th><td><input type="text" name="writer" th:value="${writer}" readonly></td>
+					<th>강사</th><td><input type="text" name="teacher" th:value="${writer}" readonly></td>
 				</tr>
 				<tr>
 					<th>내용</th>
 					<td><textarea name="content" cols="206" rows="13"></textarea></td>
 				</tr>
 				<tr>
+					<th>최대인원</th>
+					<td>
+					<input type="text" name="maxcnt" id="cnt">
+					</td>
+				</tr>
+				<tr>
 					<th colspan="2" align="center">
-						<input type="submit" value="새글등록">
+						<input type="submit" value="강의등록">
 					</th>
 				</tr>
 			</table>
 		</form>
-		<a th:href="@{/List}">글목록</a>
+		<a th:href="@{/sub}">수강 신청 목록</a>
 	</center>
+	<script>
+		function checkcnt(){
+			var cnt = document.getElementById("cnt").value;
+			if(isNaN(cnt)){
+				alert("최대인원에 숫자를 입력하세요")
+				return false;
+			}
+			else{
+				return true;
+			}
+		}
+	</script>
 </body>
 </html>
