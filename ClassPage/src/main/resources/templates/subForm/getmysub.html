@@ -20,6 +20,7 @@
 </style>
 </head>
 <body>
+	<div th:insert="~{/header::header}"></div>
 <center>
 	<form action="/deleteSub" method="get">
 		<h1 th:text="${sub.getTitle}"></h1>

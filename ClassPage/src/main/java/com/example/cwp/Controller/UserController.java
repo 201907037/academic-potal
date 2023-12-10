@@ -32,9 +32,10 @@ public class UserController {
 	}
 	
 	@PostMapping("/end")
-	public String endAsign(User user) {
+	public String endAsign(User user,Model model) {
 		us.insertUser(user);
-		
+		model.addAttribute("name", user.getName());
+		model.addAttribute("authority", user.getAuthority());
 		return "/userForm/welcome";
 	}
 	@PostMapping("/asfinal")

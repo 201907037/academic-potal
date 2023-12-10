@@ -36,16 +36,10 @@ public class SubController {
 		List<Sub> sublist = ss.getSubList();
 		
 		int s1,s2,s3,s4,s5;
-		
-		
 		s1 = user.getSub1();
-		
-		s2 = user.getSub2();
-			 
+		s2 = user.getSub2();	 
 		s3 = user.getSub3();
-		
 		s4 = user.getSub4();
-		
 		s5 = user.getSub5();
 		
 		sublist.removeIf(sub-> sub.getSeq()==s1);
